@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry form</title>
+    <link rel="stylesheet" href="{%static 'css/enquiryform.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="form">
+
+                <div class="left-side">
+                    <div class="left-heading">
+                        <h3>Employee Form</h3>
+                    </div>
+                    <div class="steps-content">
+                        <h3>Step <span class="step-number">1</span></h3>
+                        <p class="step-number-content active">Enter your personal information to get closer to
+                            companies.</p>
+                        <p class="step-number-content d-none">Get to know better by adding your diploma,certificate and
+                            education life.</p>
+                        <p class="step-number-content d-none">Help companies get to know you better by telling then about
+                            your past experiences.</p>
+                        <p class="step-number-content d-none">Add your profile piccture and let companies find youy
+                            fast.</p>
+                    </div>
+                    <ul class="progress-bar">
+                        <li class="active">Personal Information</li>
+                        <li>Additional info</li>
+                        <li>Bank details</li>
+                        <li>Availability</li>
+                    </ul>
+    
+    
+                </div>
+                <div class="right-side">
+                    <form id="myForm" method="POST" action="{% url 'FormSubmissionView' %}" class="appointment w-100">
+                    <div class="main active">
+
+
+                        <div class="text">
+                            <h2>Enter your Personal Information</h2>
+                            <p>Enter your personal information to get closer to copanies.</p>
+                        </div>
+
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input name="firstname" placeholder="First Name" type="text" required require id="user_name">
+    
+                            </div>
+                            <div class="input-div">
+                                <input name="lastname"  placeholder="Last Name" type="text" required>
+    
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input name="contact" placeholder="Contact number" type="text" required require>
+    
+                            </div>
+                            <div class="input-div">
+                                <input name="email" placeholder="E-mail Address" type="text" required require>
+    
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input name="country" placeholder="Country" type="text" required require>
+    
+                            </div>
+                            <div class="input-div">
+                                <input name="city" placeholder="City" type="text" required require>
+    
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <button class="next_button">Next Step</button>
+                        </div>
+
+                    </div>
+
+                    <div class="main">
+    
+                        <div class="tab-pane fade" id="dob" role="tabpanel" aria-labelledby="dob-tab">
+                            <div style="font-size:12px;" class="form-group mb-4">
+                                <label for="birthdate">Date of Birth</label>
+                                <input name="birthdate" style="margin-bottom:15px;" type="text" class="form-control" id="birthdate"
+                                       placeholder="YYYY-MM-DD">
+                            </div>
+                        </div>
+                        <div style="font-size:12px;" class="tab-pane fade" id="additionalInfo" role="tabpanel"
+                             aria-labelledby="additionalInfo-tab">
+                            <div class="form-row">
+                                <div class="p-4 form-group col-md-6">
+                                    <label for="passportNumber">Passport Number/Issuing Country</label>
+                                    <input name="passportnumber" style="margin-bottom:15px;" type="text" class="form-control " id="passportNumber"
+                                           required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="tfn">TFN (If Shareable)</label>
+                                    <input name="TFN" style="margin-bottom:15px;" type="text" class="form-control" id="tfn">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="policeChecks">Police Checks</label>
+    
+                                    <input type="radio" id="policeChecksYes" name="policeChecks" value="yes" required>
+                                    <label for="policeChecksYes" class="form-check-label">Yes</label>
+                                    <input type="radio" id="policeChecksNo" name="policeChecks" value="no" required>
+                                    <label for="policeChecksNo" class="form-check-label">No</label>
+    
+                                    <input name="policeChecksnumber" style="margin-bottom:15px;" type="text" class="form-control"
+                                           id="policeChecksIdNumber"
+                                           placeholder="Check ID Number" required>
+                                </div>
+                                <div style="font-size:12px;" class="form-group col-md-6">
+                                    <label for="wwcc">WWCC</label>
+    
+                                    <input type="radio" id="wwccYes" name="wwcc" value="yes" required>
+                                    <label for="wwccYes" class="form-check-label">Yes</label>
+                                    <input type="radio" id="wwccNo" name="wwcc" value="no" required>
+                                    <label for="wwccNo" class="form-check-label">No</label>
+    
+                                    <input style="margin-bottom:15px;" type="text" class="form-control" name="wwccnumber" id="wwccIdNumber"
+                                           placeholder="Check ID Number"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="covidVaccination">Covid Vaccination</label>
+                                <div style="margin-bottom:15px;" class="form-check">
+                                    <input type="text" id="vaccination" placeholder="covid vaccine name" name="covidVaccination" >
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons button_space">
+                            <button class="back_button">Back</button>
+                            <button class="next_button">Next Step</button>
+                        </div>
+                    </div>
+                    <div style="font-size:12px;" class="main">
+                        <small><i class="fa fa-smile-o"></i></small>
+                        <div class="text">
+                            <h2>Bank Details -</h2>
+    
+                        </div>
+                        <div class="form-row">
+    
+                            <div style="margin-bottom:10px;" class="form-group col-md-2">
+                                <label for="accountName"> Account Name</label>
+                                <input type="text" name="account_holder_name" style="margin-bottom:3px;" type="text" class="form-control" id="accountName" required>
+                            </div>
+    
+                            <div style="margin-bottom:10px;" class="form-group col-md-2">
+                                <label for="bsb">BSB</label>
+                                <input type="text" name="bsb_number" class="form-control" id="bsb" required>
+                            </div>
+                            <div style="margin-bottom:10px;" class="form-group col-md-2">
+                                <label for="accountNumber">Account Number</label>
+                                <input type="text" name="account_number"class="form-control" id="accountNumber" required>
+                            </div>
+    
+                                <div style="margin-bottom:10px;" class="form-group col-md-6">
+                                    <label for="emergencyContactName">Emergency Contact Person Name</label>
+                                    <input type="text" name="emergency_contact_person" class="form-control" id="emergencyContactName" required>
+                                </div>
+                                <div style="margin-bottom:10px;" class="form-group col-md-6">
+                                    <label for="emergencyContactNumber">Emergency Contact Person Number</label>
+                                    <input type="text" name="emergency_contact_number"  class="form-control" id="emergencyContactNumber" required>
+                                </div>
+    
+    
+                        </div>
+    
+    
+                        <div class="buttons button_space">
+                            <button class="back_button">Back</button>
+                            <button class="next_button">Next Step</button>
+                        </div>
+                    </div>
+    
+    
+                    <div class="main">
+                        <div class="form-group">
+                            <label style="text:bold;" for="availability">Availability:</label>
+                            <table id="availabilityTable" class="table">
+                                <thead>
+                                <tr>
+                                    <th>Days</th>
+                                    <th>Morning</th>
+                                    <th>Noon</th>
+                                    <th>Night</th>
+                                    <th>Custom Time Slot</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Monday</td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="text" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td>Tuesday</td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="text" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td>Wednesday</td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="text" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td>Thursday</td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="text" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td>Friday</td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="text" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td>Saturday</td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="text" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td>Sunday</td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                    <td><input type="text" class="form-control"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="buttons button_space">
+                            <button class="back_button">Back</button>
+                            <button id="submitButton" onclick="submitForm(event)" class="submit_button">Submit</button>
+<!--                            <input id="submitButton" type="submit" onclick="submitForm(event)" value="Make an Appointment" class="btn btn-primary py-3 px-4">-->
+
+                        </div>
+                    </div>
+                    <div class="main">
+                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                        </svg>
+    
+                        <div class="text congrats">
+                            <h2>Congratulations!</h2>
+                            <p>Thanks Mr./Mrs. <span class="shown_name"></span> your information have been submitted
+                                successfully for the future reference we will contact you soon.</p>
+                        </div>
+                    </div>
+    
+                </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+ function submitForm(event) {
+  event.preventDefault();  // Prevent the form from submitting normally
+
+  // Send the form data to the server using AJAX
+  var availabilityData = getAvailabilityData();
+  var form = document.getElementById("myForm");
+  var formData = new FormData(form);
+  formData.append("availability", JSON.stringify(availabilityData));
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", form.action, true);
+
+  // Get the CSRF token from the cookie
+  var csrftoken = getCookie("csrftoken");
+
+  // Set the CSRF token in the request header
+  xhr.setRequestHeader("X-CSRFToken", csrftoken);
+
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      // Update the button text
+      var submitButton = document.getElementById("submitButton");
+      submitButton.value = "Form Submitted Successfully";
+      submitButton.style.backgroundColor = "#00800d ";
+      submitButton.disabled = true;
+
+      // Reset the form
+      form.reset();
+    }
+  };
+  console.log(formData);
+  xhr.send(formData);
+}
+
+function getAvailabilityData() {
+  var availabilityTable = document.getElementById("availabilityTable");
+  var tableRows = availabilityTable.getElementsByTagName("tr");
+
+  var availabilityData = [];
+
+  // Start from i = 1 to skip the table header row
+  for (var i = 1; i < tableRows.length; i++) {
+    var row = tableRows[i];
+    var rowData = {};
+
+    rowData.day = row.cells[0].textContent.trim();
+    rowData.morning = row.cells[1].querySelector("input[type='checkbox']").checked;
+    rowData.noon = row.cells[2].querySelector("input[type='checkbox']").checked;
+    rowData.night = row.cells[3].querySelector("input[type='checkbox']").checked;
+    rowData.customTimeSlot = row.cells[4].querySelector("input[type='text']").value;
+
+    availabilityData.push(rowData);
+  }
+
+  return availabilityData;
+}
+
+// Function to get the value of a specific cookie by name
+function getCookie(name) {
+  var cookieArr = document.cookie.split(";");
+  for (var i = 0; i < cookieArr.length; i++) {
+    var cookiePair = cookieArr[i].split("=");
+    if (cookiePair[0].trim() === name) {
+      return decodeURIComponent(cookiePair[1]);
+    }
+  }
+  return null;
+}
+
+
+  // Get the birthdate input element
+  var birthdateInput = document.getElementById('birthdate');
+
+  // Add an event listener to the input field for the 'blur' event
+  birthdateInput.addEventListener('blur', function() {
+    // Get the value entered in the birthdate input field
+    var birthdate = birthdateInput.value;
+
+    // Validate the birthdate using a regular expression pattern
+    var pattern = /^\d{4}-\d{2}-\d{2}$/;
+
+    // Check if the birthdate matches the pattern
+    if (!pattern.test(birthdate)) {
+      // Display an error message or perform any other validation action
+      alert('Please enter a valid birthdate in the format YYYY-MM-DD.');
+    }
+  });
+</script>
+
+
+
+
+
+
+
+<script src="{%static 'js/formenquiry.js' %}"></script>
+</html>

@@ -1,0 +1,7 @@
+# created by virtualenv automatically
+/shelf/
+/workspace.xml
+/cleaningvenv
+*.sqlite3
+/media
+db.sqlite3

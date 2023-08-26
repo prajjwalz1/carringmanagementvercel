@@ -1,0 +1,333 @@
+{%extends 'base.html'%}
+{%block title%} <title>Home page</title>{%endblock%}
+{%block content%}
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.5.0/js/bootstrap.bundle.min.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<body>
+<!-- END nav -->
+<div class="hero-wrap js-fullheight" style="background-image: url('{{slides.0.image.url}}');"
+     data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
+             data-scrollax-parent="true">
+            <div class="col-md-6 ftco-animate">
+                <h2 class="subheading">Leave the house cleaning chores to us</h2>
+                <h1 class="mb-4">Let us do the dirty work, so you don't have to.</h1>
+                <p><a href="#" class="btn btn-primary mr-md-4 py-2 px-4">Learn more <span
+                        class="ion-ios-arrow-forward"></span></a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-appointment ftco-section ftco-no-pt ftco-no-pb">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row d-md-flex justify-content-center">
+            <div class="col-md-12">
+                <div class="wrap-appointment bg-white d-md-flex pl-md-4 pb-5 pb-md-0">
+                    <form id="myForm" method="POST" action="{% url 'make_appointment' %}" class="appointment w-100">
+                        {% csrf_token %}
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md d-flex align-items-center pt-4 pt-md-0">
+                                <div class="form-group py-md-4 py-2 px-4 px-md-0">
+                                    <label for="name">Name</label>
+                                    <input name="name" id="name" type="text" class="form-control"
+                                           placeholder="Your Name" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md d-flex align-items-center">
+                                <div class="form-group py-md-4 py-2 px-4 px-md-0">
+                                    <label for="phone">Phone number</label>
+                                    <input name="phone" id="phone" type="text" class="form-control"
+                                           placeholder="Phone number" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md d-flex align-items-center">
+                                <div class="form-group py-md-4 py-2 px-4 px-md-0">
+                                    <label for="services">Service</label>
+                                    <input name="services" id="services" type="text" class="form-control"
+                                           placeholder="Service Name" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md d-flex align-items-center pb-4 pb-md-0">
+                                <div class="form-group py-md-4 py-2 px-4 px-md-0">
+                                    <label for="email">Email</label>
+                                    <input name="email" id="email" type="email" class="form-control"
+                                           placeholder="Enter your Email" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md d-flex align-items-center align-items-stretch">
+                                <div class="form-group py-md-4 py-2 px-4 px-md-0 d-flex align-items-stretch bg-primary">
+                                    <input style="background:#2b98f0;border-color:#fff;" id="submitButton" type="submit"
+                                           value="Make an Appointment" class="btn btn-primary py-3 px-4">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="successModalLabel">Form Submitted Successfully!</h5>
+
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Your appointment has been successfully submitted.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close
+                                        </button>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section ftco-no-pt ftco-no-pb">
+    <div class="container">
+        <div class="row d-flex no-gutters">
+            <div class="col-md-6 d-flex">
+                <div class="img d-flex align-items-center justify-content-center py-5 py-md-0"
+                     style="background-image:url('{{about.0.image.url}}');">
+                    <div class="time-open-wrap">
+                        <div class="desc p-4">
+                            <h2>Business Hours</h2>
+                            <div class="opening-hours">
+                                <h4>Opening Days:</h4>
+                                <p class="pl-3">
+                                    <span><strong>Monday – Saturday:</strong> 9:00 Am to 6:00Pm</span>
+
+                                </p>
+                                <h4>Vacations:</h4>
+                                <p class="pl-3">
+                                    <span>All Sunday Days</span>
+                                    <span>All Official Holidays</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="desc p-4 bg-secondary">
+                            <h3 class="heading">For Urgent Enquiry</h3>
+                            <span class="phone">+61 413 239 256</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 pl-md-5 pt-md-5">
+                <div class="row justify-content-start py-5">
+                    <div class="col-md-12 heading-section ftco-animate">
+                        <span class="subheading">Welcome to <span>{{about.0.Company_name}}</span></span>
+                        <h2 class="mb-4">{{about.0.Title}}</h2>
+                        <p>{{about.0.description}}</p>
+                    </div>
+                </div>
+                <div class="row ftco-counter py-5" id="section-counter">
+                    <div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18">
+                            <div class="text">
+                                <strong class="number" data-number="{{about.0.years_of_experience}}">0</strong>
+                            </div>
+                            <div class="text">
+                                <span>Years of <br>Experienced</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18">
+                            <div class="text">
+                                <strong class="number" data-number="{{about.0.Total_projects}}">0</strong>
+                            </div>
+                            <div class="text">
+                                <span>Happy <br>Customers</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18">
+                            <div class="text">
+                                <strong class="number" data-number="{{about.0.Total_projects}}">0</strong>
+                            </div>
+                            <div class="text">
+                                <span>Building <br>Cleaned</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-no-pb">
+    <div class="container">
+        <div class="row justify-content-center pb-5 mb-3">
+            <div class="col-md-12 heading-section  text-center ftco-animate">
+                <span class="subheading">Our Servives</span>
+                <h2>We Provide following services </h2>
+            </div>
+        </div>
+        <div class="row">
+            {%for projects in Services%}
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="work img d-flex align-items-center"
+                     style="background-image: url('{{projects.image.url}}'); margin-bottom: 0px;">
+                    <a href="{{projects.image.url}}"
+                       class="icon image-popup d-flex justify-content-center align-items-center">
+                        <span class="fa fa-expand"></span>
+                    </a>
+                    <div class="desc w-100 px-4 text-center pt-5 mt-5">
+                        <div class="text w-100 mb-3 mt-4">
+                            <h2><a href="{%url 'single_services' projects.id%}">{{ projects.project_name }}</a></h2>
+
+                        </div>
+                    </div>
+
+                </div>
+                <h2 style="text-align:center; margin-bottom:0.5rem; ">{{projects.project_name}}</h2>
+                <p style="text-align:center; margin-bottom:4.5rem; margin-top:0rem;">
+                    {{projects.project_Description|slice:":80"}} </p>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</section>
+<section class="ftco-section testimony-section ftco-bg-dark">
+    <div class="container">
+        <div class="row justify-content-center pb-5 mb-3">
+            <div class="col-md-7 heading-section heading-section-white text-center ftco-animate">
+                <span class="subheading">Testimonies</span>
+                <h2>Happy Customer</h2>
+            </div>
+        </div>
+        <div class="row ftco-animate">
+            <div class="col-md-12">
+                <div class="carousel-testimony owl-carousel ftco-owl">
+
+                    {%for testimonies in testimonies%}
+                    <div class="item">
+
+                        <div class="testimony-wrap py-4">
+                            <div class="icon d-flex align-items-center justify-content-center"><span
+                                   </span>
+                            </div>
+                            <div class="text">
+                                <div class="d-flex align-items-center mb-4">
+                                    {% autoescape off %}
+                                    <p class="mb-1">{{ testimonies.comments }}</p>
+                                    {% endautoescape %}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {%endfor%}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+  document.getElementById("myForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // Prevent form submission
+
+    // Perform form validation
+    if (validateForm()) {
+      // Retrieve CSRF token from cookie
+      var csrftoken = getCookie('csrftoken');
+
+      // Get the input field values
+      var name = document.getElementById("name").value;
+      var phone = document.getElementById("phone").value;
+      var services = document.getElementById("services").value;
+      var email = document.getElementById("email").value;
+
+      // Construct the request payload
+      var payload = "name=" + encodeURIComponent(name) +
+                    "&phone=" + encodeURIComponent(phone) +
+                    "&services=" + encodeURIComponent(services) +
+                    "&email=" + encodeURIComponent(email);
+
+      // Submit the form
+      var form = this;
+      var xhr = new XMLHttpRequest();
+      xhr.open(form.method, form.action, true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.setRequestHeader('X-CSRFToken', csrftoken); // Include CSRF token in headers
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            if (xhr.responseText === 'success') {
+              // Display success modal
+              var successModal = new bootstrap.Modal(document.getElementById("successModal"));
+              successModal.show();
+
+              // Reset the form
+              form.reset();
+            } else {
+              // Handle other response cases
+            }
+          } else {
+            // Handle HTTP error cases
+          }
+        }
+      };
+      xhr.send(payload);
+    }
+  });
+
+  function validateForm() {
+    // Form validation code...
+
+    return true;
+  }
+
+  // Function to retrieve CSRF token from cookie
+  function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+
+  }
+function dismissModal() {
+    var successModal = document.getElementById('successModal');
+    var modalInstance = bootstrap.Modal.getInstance(successModal);
+    modalInstance.hide();
+  }
+
+
+
+</script>
+
+</body>
+{%endblock%}
+
+
+
+
+
+

@@ -1,0 +1,315 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+<style>
+  .custom-width {
+    width: 350px;
+  }
+    .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+</style>
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end">
+          <div class="col-md-9 ftco-animate pb-5">
+          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="{%url 'home'%}">Home <i class="fa fa-chevron-right"></i></a></span> <span>About us <i class="fa fa-chevron-right"></i></span></p>
+            <h1 class="mb-0 bread">About Us</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+<div class="form-container">
+<form class="border border-primary rounded p-4" id="registrationForm" onsubmit="submitForm(); return false;">
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="personalInfo-tab" data-toggle="pill" href="#personalInfo" role="tab" aria-controls="personalInfo" aria-selected="true">Personal Info</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="dob-tab" data-toggle="pill" href="#dob" role="tab" aria-controls="dob" aria-selected="false">Date of Birth</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="additionalInfo-tab" data-toggle="pill" href="#additionalInfo" role="tab" aria-controls="additionalInfo" aria-selected="false">Additional Info</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="bankDetails-tab" data-toggle="pill" href="#bankDetails" role="tab" aria-controls="bankDetails" aria-selected="false">Bank Details</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="emergencyContact-tab" data-toggle="pill" href="#emergencyContact" role="tab" aria-controls="emergencyContact" aria-selected="false">Emergency Contact</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="availability-tab" data-toggle="pill" href="#availability" role="tab" aria-controls="availability" aria-selected="false">Availability</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="personalInfo" role="tabpanel" aria-labelledby="personalInfo-tab">
+      <div class="form-group ">
+        <label for="fullName">Full Name</label>
+        <input type="text" class="form-control custom-width" id="fullName" required>
+      </div>
+
+      <div class="form-group ">
+        <label for="contactNumber">Contact Number</label>
+        <input type="text" class="form-control custom-width" id="contactNumber" required>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" class="form-control custom-width" id="address" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control custom-width" id="email" required>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="dob" role="tabpanel" aria-labelledby="dob-tab">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="dobDay">Date of Birth</label>
+          <input type="text" class="form-control" id="dobDay" placeholder="DD" required>
+        </div>
+        <div class="form-group col-md-4">
+          <label>&nbsp;</label>
+          <input type="text" class="form-control" placeholder="MM" required>
+        </div>
+        <div class="form-group col-md-4">
+          <label>&nbsp;</label>
+          <input type="text" class="form-control" placeholder="YYYY" required>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="additionalInfo" role="tabpanel" aria-labelledby="additionalInfo-tab">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="passportNumber">Passport Number/Issuing Country</label>
+          <input type="text" class="form-control" id="passportNumber" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="tfn">TFN (If Shareable)</label>
+          <input type="text" class="form-control" id="tfn">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="policeChecks">Police Checks</label>
+          <div class="form-check">
+            <input type="radio" id="policeChecksYes" name="policeChecks" value="yes" required>
+            <label for="policeChecksYes" class="form-check-label">Yes</label>
+            <input type="radio" id="policeChecksNo" name="policeChecks" value="no" required>
+            <label for="policeChecksNo" class="form-check-label">No</label>
+          </div>
+          <input type="text" class="form-control" id="policeChecksIdNumber" placeholder="Check ID Number" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="wwcc">WWCC</label>
+          <div class="form-check">
+            <input type="radio" id="wwccYes" name="wwcc" value="yes" required>
+            <label for="wwccYes" class="form-check-label">Yes</label>
+            <input type="radio" id="wwccNo" name="wwcc" value="no" required>
+            <label for="wwccNo" class="form-check-label">No</label>
+          </div>
+          <input type="text" class="form-control" id="wwccIdNumber" placeholder="Check ID Number" required>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="bankDetails" role="tabpanel" aria-labelledby="bankDetails-tab">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="covidVaccination">Covid Vaccination</label>
+          <div class="form-check">
+            <input type="checkbox" id="firstDose" name="covidVaccination" value="firstDose">
+            <label for="firstDose" class="form-check-label">1st Dose</label>
+            <input type="checkbox" id="secondDose" name="covidVaccination" value="secondDose">
+            <label for="secondDose" class="form-check-label">2nd Dose</label>
+            <input type="checkbox" id="booster" name="covidVaccination" value="booster">
+            <label for="booster" class="form-check-label">Booster</label>
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="accountName">Bank Details - Account Name</label>
+          <input type="text" class="form-control" id="accountName" required>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="bsb">BSB</label>
+          <input type="text" class="form-control" id="bsb" required>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="accountNumber">Account Number</label>
+          <input type="text" class="form-control" id="accountNumber" required>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="emergencyContact" role="tabpanel" aria-labelledby="emergencyContact-tab">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="emergencyContactName">Emergency Contact Person Name</label>
+          <input type="text" class="form-control" id="emergencyContactName" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="emergencyContactNumber">Emergency Contact Person Number</label>
+          <input style="margin-bottom:10px;" type="text" class="form-control" id="emergencyContactNumber" required>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="availability" role="tabpanel" aria-labelledby="availability-tab">
+      <div class="form-group">
+        <label for="availability">Availability:</label>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Days</th>
+              <th>Morning</th>
+              <th>Noon</th>
+              <th>Night</th>
+              <th>Time Slot</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monday</td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="text" class="form-control"></td>
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="text" class="form-control"></td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="text" class="form-control"></td>
+            </tr>
+            <tr>
+              <td>Thursday</td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="text" class="form-control"></td>
+            </tr>
+            <tr>
+              <td>Friday</td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="text" class="form-control"></td>
+            </tr>
+            <tr>
+              <td>Saturday</td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="text" class="form-control"></td>
+            </tr>
+            <tr>
+              <td>Sunday</td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="checkbox" class="form-check-input"></td>
+              <td><input type="text" class="form-control"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="form-group mt-4">
+    <button type="button" class="btn btn-primary prev-btn" onclick="prevStep()">Previous</button>
+    <button type="button" class="btn btn-primary next-btn" onclick="nextStep()">Next</button>
+    <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+  </div>
+</form>
+
+
+</div>
+<script>
+
+  function submitForm() {
+    // Get the form element
+    var form = document.getElementById("registrationForm");
+
+    // Prepare the data
+    var formData = new FormData(form);
+    var data = {};
+    formData.forEach(function(value, key) {
+      data[key] = value;
+    });
+
+    // Send the data to Google Forms
+    fetch("https://docs.google.com/forms/d/e/{FORM_ID}/formResponse", {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams(data).toString(),
+    })
+      .then(function(response) {
+        // Handle the response if needed
+        console.log("Form submitted successfully!");
+      })
+      .catch(function(error) {
+        // Handle the error if needed
+        console.error("Form submission error:", error);
+      });
+  }
+
+
+function validateForm() {
+  // Perform form validation here
+  // You can use JavaScript to validate each field based on your requirements
+
+  // Return false to prevent the form from submitting if there are validation errors
+  return false;
+}
+// JavaScript code
+
+
+
+var currentStep = 0;
+var steps = ["personalInfo", "dob", "additionalInfo", "bankDetails", "emergencyContact", "availability"];
+
+function nextStep() {
+  if (currentStep < steps.length - 1) {
+    currentStep++;
+    showStep(currentStep);
+  }
+}
+
+function prevStep() {
+  if (currentStep > 0) {
+    currentStep--;
+    showStep(currentStep);
+  }
+}
+
+function showStep(stepIndex) {
+  $(".tab-pane").removeClass("show active");
+  $("#" + steps[stepIndex]).addClass("show active");
+
+  $(".nav-link").removeClass("active");
+  $("#" + steps[stepIndex] + "-tab").addClass("active");
+
+  $(".prev-btn").attr("disabled", stepIndex === 0);
+  $(".next-btn").attr("disabled", stepIndex === steps.length - 1);
+}
+
+function submitForm() {
+  // Handle form submission logic here
+}
+
+</script>
+
+{%endblock%}

@@ -1,0 +1,99 @@
+{%extends 'base.html'%}
+
+{% block content %}
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+<!-- form_submission.html -->
+<table class="table table-striped">
+  <thead style="font-size: 10px; padding: 0.5px;">
+    <tr>
+
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Contact</th>
+      <th>Email</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Birthdate</th>
+      <th>Passport Number</th>
+      <th>TFN</th>
+      <th>Account Holder Name</th>
+      <th>BSB Number</th>
+      <th>Account Number</th>
+      <th>Emergency Contact Person</th>
+      <th>Emergency Contact Number</th>
+      <th>Availability</th>
+    </tr>
+  </thead>
+  <tbody style="font-size:14px; padding:0.1rem;">
+    {% for submission in form_submissions %}
+    <tr>
+      <td>{{ submission.firstname }}</td>
+      <td>{{ submission.lastname }}</td>
+      <td>{{ submission.contact }}</td>
+      <td>{{ submission.email }}</td>
+      <td>{{ submission.country }}</td>
+      <td>{{ submission.city }}</td>
+      <td>{{ submission.birthdate }}</td>
+      <td>{{ submission.passportnumber }}</td>
+      <td>{{ submission.TFN }}</td>
+      <td>{{ submission.account_holder_name }}</td>
+      <td>{{ submission.bsb_number }}</td>
+      <td>{{ submission.account_number }}</td>
+      <td>{{ submission.emergency_contact_person }}</td>
+      <td>{{ submission.emergency_contact_number }}</td>
+      <td>
+        <button class="btn btn-primary toggle-button" data-toggle="modal" data-target="#availabilityModal{{ submission.id }}">View Availability</button>
+        <div class="modal fade" id="availabilityModal{{ submission.id }}" tabindex="-1" role="dialog" aria-labelledby="availabilityModalLabel{{ submission.id }}" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="availabilityModalLabel{{ submission.id }}">Availability</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Day</th>
+                      <th>Morning</th>
+                      <th>Noon</th>
+                      <th>Night</th>
+                      <th>Custom Time Slot</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for availability in submission.availabilities.all %}
+                    <tr>
+                      <td>{{ availability.day }}</td>
+                      <td>{% if availability.morning == True %}<p style="color:green;">Available</p>{% else %}Unavailable{% endif %}</td>
+                      <td>{% if availability.noon == True %}<p style="color:green;">Available</p>{% else %}Unavailable{% endif %}</td>
+                        <td>{% if availability.night == True %}<p style="color:green;">Available</p>{% else %}Unavailable{% endif %}</td>
+                      <td>{{ availability.customTimeSlot }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+        </div>
+    </div>
+</section>
+
+
+{%endblock%}
+
+
