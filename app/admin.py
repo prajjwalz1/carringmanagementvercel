@@ -19,6 +19,6 @@ class FeatureAdmin(admin.ModelAdmin):
     pass
 
 class AppointmentAdmin(admin.ModelAdmin):
-    list_display = ('id','name','email', 'phone', 'services', 'timestamp', )
+    list_display = ('appointment_id','name','email', 'phone', 'services', 'timestamp', )
     ordering = ('-timestamp', )
 admin.site.register(Appointment, AppointmentAdmin)

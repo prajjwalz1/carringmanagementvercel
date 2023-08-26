@@ -202,8 +202,8 @@ class about_us(models.Model):
 
 
 class Appointment(models.Model):
+    appointment_id = models.CharField(primary_key=True, max_length=100,default=1)  # Assuming you want appointment_id as the primary key
     name = models.CharField(max_length=100)
-    id = models.AutoField(primary_key=True)
     phone = models.CharField(max_length=20)
     services = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
@@ -211,6 +211,7 @@ class Appointment(models.Model):
 
     def __str__(self):
         return self.name
+
 
 # class Availability(models.Model):
 #     day = models.CharField(max_length=20)
