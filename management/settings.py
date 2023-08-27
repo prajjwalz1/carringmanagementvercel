@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
+import environ
+env = environ.Env()
+environ.Env.read_env()
 
 from pathlib import Path
 
@@ -45,9 +48,9 @@ INSTALLED_APPS = [
 
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dfvhzwyls',
-    'API_KEY': '354971655358847',
-    'API_SECRET': '2x_mOhoGcy2X_qJENqzXxaZJIUw'
+    'CLOUD_NAME': env('CLOUD_NAME'),
+    'API_KEY': env('API_KEY'),
+    'API_SECRET': env('API_SECRET')
 }
 
 
@@ -97,11 +100,11 @@ WSGI_APPLICATION = 'management.wsgi.app'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'containers-us-west-179.railway.app',
-        'PORT': '6204',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': '4j3R4eKYupYUzxQop3fb',
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
     }
 }
 
@@ -131,11 +134,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'acharyaprajjwal152@gmail.com'
-EMAIL_HOST_PASSWORD = 'xgwwtdotxluxyfca'
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
