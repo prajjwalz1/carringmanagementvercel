@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'management.wsgi.app'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'HOST': 'containers-us-west-179.railway.app',
         'PORT': '6204',
         'NAME': 'railway',
