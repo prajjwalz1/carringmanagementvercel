@@ -16,35 +16,35 @@ class Our_team(models.Model):
     twitter = models.CharField(max_length=100, null=True, blank=True)
     instagram = models.CharField(max_length=100, null=True, blank=True)
 
-    def save(self, *args, **kwargs):
-        # Open the image using Pillow
-        image = Image.open(self.image)
+    # def save(self, *args, **kwargs):
+    #     # Open the image using Pillow
+    #     image = Image.open(self.image)
 
-        # Get the dimensions of the original image
-        width, height = image.size
+    #     # Get the dimensions of the original image
+    #     width, height = image.size
 
-        # Determine the desired size for cropping
-        crop_size = min(width, height)
+    #     # Determine the desired size for cropping
+    #     crop_size = min(width, height)
 
-        # Calculate the coordinates for cropping the image
-        left = (width - crop_size) // 2
-        top = (height - crop_size) // 2
-        right = left + crop_size
-        bottom = top + crop_size
+    #     # Calculate the coordinates for cropping the image
+    #     left = (width - crop_size) // 2
+    #     top = (height - crop_size) // 2
+    #     right = left + crop_size
+    #     bottom = top + crop_size
 
-        # Crop the image
-        cropped_image = image.crop((left, top, right, bottom))
+    #     # Crop the image
+    #     cropped_image = image.crop((left, top, right, bottom))
 
-        # Resize the cropped image to a desired size
-        desired_size = (350, 350)
-        cropped_image.thumbnail(desired_size, Image.ANTIALIAS)
+    #     # Resize the cropped image to a desired size
+    #     desired_size = (350, 350)
+    #     cropped_image.thumbnail(desired_size, Image.ANTIALIAS)
 
-        # Optimize the image to reduce file size
-        optimized_image = ImageOps.exif_transpose(cropped_image)
-        optimized_image.save(self.image.path, optimize=True)
+    #     # Optimize the image to reduce file size
+    #     optimized_image = ImageOps.exif_transpose(cropped_image)
+    #     optimized_image.save(self.image.path, optimize=True)
 
-        # Save the rest of the model
-        super().save(*args, **kwargs)
+    #     # Save the rest of the model
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return self.Name;
@@ -106,31 +106,31 @@ class Package(models.Model):
 class Slide(models.Model):
     image_title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='carousel')
-    def save(self, *args, **kwargs):
-        # Open the original image using Pillow
-        original_image = Image.open(self.image)
+    # def save(self, *args, **kwargs):
+    #     # Open the original image using Pillow
+    #     original_image = Image.open(self.image)
 
-        # Optimize the image to reduce file size
-        optimized_image = ImageOps.exif_transpose(original_image)
+    #     # Optimize the image to reduce file size
+    #     optimized_image = ImageOps.exif_transpose(original_image)
 
-        # Create an in-memory file-like object to save the optimized image
-        image_io = BytesIO()
-        optimized_image.save(image_io, format='JPEG', optimize=True)
+    #     # Create an in-memory file-like object to save the optimized image
+    #     image_io = BytesIO()
+    #     optimized_image.save(image_io, format='JPEG', optimize=True)
 
-        # Create an InMemoryUploadedFile from the optimized image
-        optimized_image_file = InMemoryUploadedFile(
-            image_io,
-            None,
-            self.image.name,
-            'image/jpeg',
-            optimized_image.tell,
-            None
-        )
+    #     # Create an InMemoryUploadedFile from the optimized image
+    #     optimized_image_file = InMemoryUploadedFile(
+    #         image_io,
+    #         None,
+    #         self.image.name,
+    #         'image/jpeg',
+    #         optimized_image.tell,
+    #         None
+    #     )
 
-        # Save the optimized image to the image field
-        self.image = optimized_image_file
+    #     # Save the optimized image to the image field
+    #     self.image = optimized_image_file
 
-        super().save(*args, **kwargs)
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return self.image_title
@@ -169,31 +169,31 @@ class about_us(models.Model):
     description = models.TextField(max_length=1000, null=True)
     Total_projects = models.CharField(max_length=20, null=True)
 
-    def save(self, *args, **kwargs):
-        # Open the original image using Pillow
-        original_image = Image.open(self.image)
+    # def save(self, *args, **kwargs):
+    #     # Open the original image using Pillow
+    #     original_image = Image.open(self.image)
 
-        # Optimize the image to reduce file size
-        optimized_image = ImageOps.exif_transpose(original_image)
+    #     # Optimize the image to reduce file size
+    #     optimized_image = ImageOps.exif_transpose(original_image)
 
-        # Create an in-memory file-like object to save the optimized image
-        image_io = BytesIO()
-        optimized_image.save(image_io, format='JPEG', optimize=True)
+    #     # Create an in-memory file-like object to save the optimized image
+    #     image_io = BytesIO()
+    #     optimized_image.save(image_io, format='JPEG', optimize=True)
 
-        # Create an InMemoryUploadedFile from the optimized image
-        optimized_image_file = InMemoryUploadedFile(
-            image_io,
-            None,
-            self.image.name,
-            'image/jpeg',
-            optimized_image.tell,
-            None
-        )
+    #     # Create an InMemoryUploadedFile from the optimized image
+    #     optimized_image_file = InMemoryUploadedFile(
+    #         image_io,
+    #         None,
+    #         self.image.name,
+    #         'image/jpeg',
+    #         optimized_image.tell,
+    #         None
+    #     )
 
-        # Save the optimized image to the image field
-        self.image = optimized_image_file
+    #     # Save the optimized image to the image field
+    #     self.image = optimized_image_file
 
-        super().save(*args, **kwargs)
+    #     super().save(*args, **kwargs)
 
 
     def __str__(self):
