@@ -101,7 +101,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'HOST': 'ep-long-mud-49593253-pooler.ap-southeast-1.postgres.vercel-storage.com',
-        # 'PORT': '5432',
+        'PORT': 5432,
         'NAME': 'verceldb',
         'USER': 'default',
         'PASSWORD': 'kzw3jEi2dShg',
