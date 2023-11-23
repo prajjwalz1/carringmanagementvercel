@@ -97,15 +97,45 @@ WSGI_APPLICATION = 'management.wsgi.app'
 # }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'HOST': env('DB_HOST'),
+#         'PORT': env('DB_PORT'),
+#         'NAME': env('DB_NAME'),
+#         'USER': env('DB_USER'),
+#         'PASSWORD': env('DB_PASSWORD'),
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT'),
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
-    }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': 'kzw3jEi2dShg',
+        'HOST': 'ep-long-mud-49593253-pooler.ap-southeast-1.postgres.vercel-storage.com',
+        'PORT': '5432',
+    },
+    'prisma': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': 'kzw3jEi2dShg',
+        'HOST': 'ep-long-mud-49593253-pooler.ap-southeast-1.postgres.vercel-storage.com',
+        'PORT': '5432',
+        'OPTIONS': {
+            'pgbouncer': True,
+            'connect_timeout': 15,
+        },
+    },
+    'non_pooling': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': 'kzw3jEi2dShg',
+        'HOST': 'ep-long-mud-49593253.ap-southeast-1.postgres.vercel-storage.com',
+        'PORT': '5432',
+    },
 }
 
 
