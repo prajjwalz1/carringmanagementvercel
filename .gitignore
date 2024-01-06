@@ -2,7 +2,7 @@
 /shelf/
 /workspace.xml
 /cleaningvenv
-*.sqlite3
+
 /media
-db.sqlite3
+
 .env*.env
