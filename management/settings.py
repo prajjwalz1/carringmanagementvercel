@@ -100,11 +100,11 @@ WSGI_APPLICATION = 'management.wsgi.app'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT'),
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': 'ep-long-mud-49593253-pooler.ap-southeast-1.postgres.vercel-storage.com',
+        'PORT': 5432,
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': 'kzw3jEi2dShg',
     }
 }
 
