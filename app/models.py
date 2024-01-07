@@ -202,7 +202,6 @@ class about_us(models.Model):
 
 
 class Appointment(models.Model):
-    appointmentid = models.CharField(primary_key=True, max_length=100,default=1)  # Assuming you want appointment_id as the primary key
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=20)
     services = models.CharField(max_length=100)
