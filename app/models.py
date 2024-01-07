@@ -210,7 +210,7 @@ class Appointment(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return self.services
 
 
 # class Availability(models.Model):
