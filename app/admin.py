@@ -18,7 +18,5 @@ admin.site.register(FormSubmission)
 class FeatureAdmin(admin.ModelAdmin):
     pass
 
-class AppointmentAdmin(admin.ModelAdmin):
-    list_display = ('appointmentid','name','email', 'phone', 'services', 'timestamp', )
-    ordering = ('-timestamp', )
-admin.site.register(Appointment, AppointmentAdmin)
+
+admin.site.register(Appointment)
